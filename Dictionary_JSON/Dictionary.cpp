@@ -285,9 +285,10 @@ void CDictionary::writeToJson()
 	ofstream json("jsonfile.json");
 	CWord *ptr = head;
 	CNode *rptr;
+	json << "{\n";
 	for (int i = 0; i < count; i++)
 	{
-		json << "{ \"" << ptr->word << "\" : {";
+		json << " \"" << ptr->word << "\" : {";
 		rptr = ptr->defination.head;
 		for (int j = 0; j < ptr->defination.count; j++)
 		{
@@ -304,14 +305,15 @@ void CDictionary::writeToJson()
 		}
 		if (i == count-1)
 		{
-			json << "}\n}";
+			json << "}\n";
 		}
 		else
 		{
-			json << "}\n},\n";
+			json << "},\n";
 			ptr = ptr->next;
 		}
 	}
+	json << "\n}";
 	json.close();
 }
 // read from JSON File and Create a Dictionary
