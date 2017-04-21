@@ -2,6 +2,7 @@ Dictionary of JSON Files Using Linked Lists
 Dictionary using linked list of list in c++ Data Structures
 Current Progress
 take input from the user as a word and its possible meanings and Add them to the Dictionary as Word Object
+## read from the JSON file and Created Dictionary
 Read Words and meaning from a comma seperated text file and then add them to the dictionary
 current file can be found in project folder as wordlist.txt
 the file contains comma seperated words and their meaning
@@ -14,7 +15,6 @@ note
 all the words/meanings/definitions of the dictionary are converted to upper case before storing or loading 
 and if a user wants to search a particular word's meaning , that word is also converted to same case. in this way searching something from dictionary will not be case sensitive any more .
 Things to be Done
-## read from the JSON file and Created Dictionary
 ## Binary file read/write
 ## Extend the Wordlist for Different Subjects
 ## Iterators to make the Dictionary Searching Word Fast
