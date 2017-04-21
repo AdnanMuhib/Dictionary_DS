@@ -44,9 +44,14 @@ public:
 	// write to JSON File
 	void writeToJson();
 	// read from JSON File
-	CDictionary* readFromJson();
+	CDictionary& readFromJson();
 	// create Distionary from text file
 	CDictionary& dictFromTxtFile();
+	// some friend Functions
+
+	friend string convertToUpperCase(string);
+	friend string convertToLowerCase(string);
+	friend string removeDoubleQuotes(string);
 
 };
 

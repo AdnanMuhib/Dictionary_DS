@@ -1,4 +1,5 @@
 #include "Dictionary.h"
+#include<algorithm>
 #include<fstream>
 #include<sstream>
 
@@ -288,51 +289,114 @@ void CDictionary::writeToJson()
 	json << "{\n";
 	for (int i = 0; i < count; i++)
 	{
-		json << " \"" << ptr->word << "\" : {";
+		json << "\"" << ptr->word << "\":{ ";
 		rptr = ptr->defination.head;
 		for (int j = 0; j < ptr->defination.count; j++)
 		{
 			if (j == ptr->defination.count - 1)
 			{
-				json << "\"" << rptr->text << "\"";
+				// remove space from the first index of the meaning if any exists
+				if (rptr->text[0] == ' ')
+				{
+					rptr->text.erase(std::remove(rptr->text.begin(), rptr->text.end(), ' '), rptr->text.end());
+				}
+				json << "\"" <<rptr->text << "\"";
 			}
 			else
 			{
-				json << "\"" << rptr->text << "\",";
+				// remove space from the first index of the meaning if any exists
+				if (rptr->text[0] == ' ')
+				{
+					rptr->text.erase(std::remove(rptr->text.begin(), rptr->text.end(), ' '), rptr->text.end());
+				}
+				json << "\"" <<rptr->text << "\",";
 				rptr = rptr->next;
 			}
 			
 		}
 		if (i == count-1)
 		{
-			json << "}\n";
+			json << " }\n";
 		}
 		else
 		{
-			json << "},\n";
+			json << " },\n";
 			ptr = ptr->next;
 		}
 	}
-	json << "\n}";
+	json << "}";
 	json.close();
 }
 // read from JSON File and Create a Dictionary
-CDictionary * CDictionary::readFromJson()
+CDictionary& CDictionary::readFromJson()
 {
-	CDictionary *myDictionary=new CDictionary();
-	CWord *newWord;
+	CWord *word;
 	CNode *term;
-	string word;
-	ifstream json("jsonfile.json");
-	while (!json.eof())
+	string line = "", feeder = "", dummy="";// dummy is for special case (last definition of word)
+	// string stream object for tokenization
+	stringstream str;
+	ifstream file("jsonfile.json");
+	int i = 0;
+	while (getline(file, line))
 	{
-		json >> word;
-		cout << "\n" << word;
-	}
-	json.close();
-	return myDictionary;
-}
+		i += 1;
+		// if it is start and end of the dictionary
+		if (line == "{" || line == "}")
+		{
+			// continues to next iteration
+			continue;
+		}
+		else
+		{
+			str.clear();
+			str << line;
+			// take the first double quoted word into term feeder
+			getline(str, feeder, ':');
+			// removing doulbe quotes around the  word
+			feeder = removeDoubleQuotes(feeder);
+			word = new CWord();
+			// setting up the word to the word object
+			word->setWord(feeder);
+			// ignoring the next : and the opening curly bracket of definitions
+			str >> feeder; // for {
 
+			// tokenizing the remaining definitions on commas
+			while (getline(str, feeder, ','))
+			{
+				dummy = "";
+				
+				// cheking if it is not the end of definitions
+				// last word of the line in JSON becomes " "word" }"
+				if(feeder[feeder.length()-1] =='}' && feeder[feeder.length() - 2] == ' ')
+				{
+					for (int i = 0; i < feeder.length()-2; i++)
+					{
+						dummy += feeder[i];
+					}
+					feeder = dummy;
+				}
+				
+				// eliminate space in the first index of the  string (if any)
+				if (feeder[0] == ' ')
+				{
+					feeder.erase(std::remove(feeder.begin(), feeder.end(), ' '), feeder.end());
+				}
+				// removing double Quotes around the word
+				feeder = removeDoubleQuotes(feeder);
+				// converting to upper case
+				feeder = convertToUpperCase(feeder);
+				// creating new node to store definition
+				term = new CNode();
+				term->setNodeData(feeder);
+				word->defination.insert(term);
+			}
+			// inserting the whole word in the dictionary
+			this->insert(word);
+		}
+	}
+	file.close();
+	return *this;
+}
 // dictionary from the wordlist of text file
 CDictionary& CDictionary::dictFromTxtFile()
 {
@@ -351,7 +415,7 @@ CDictionary& CDictionary::dictFromTxtFile()
 		word = new CWord();
 		while (getline(str,feeder,','))
 		{
-			// removing commas in the string
+			// removing commas (if any ) in the string
 			if (feeder[feeder.length() - 1] == ',')
 				feeder.pop_back();
 			// converting to upper case
@@ -376,4 +440,46 @@ CDictionary& CDictionary::dictFromTxtFile()
 	}
 	file.close();
 	return *this;
+}
+
+// friend function to convert a string into upper case
+string convertToUpperCase(string feeder)
+{
+	for (int i = 0; i < feeder.length(); i++)
+	{
+		feeder[i] = toupper(feeder[i]);
+	}
+	return feeder;
+}
+// friend function to convert a string into Lower case
+string convertToLowerCase(string feeder)
+{
+	for (int i = 0; i < feeder.length(); i++)
+	{
+		feeder[i] = tolower(feeder[i]);
+	}
+	return feeder;
+}
+// friend function to remove double Quotes from the first 
+// and the last index of the string
+
+string removeDoubleQuotes(string feeder)
+{
+	// remove the starting and ending quote of the word (if any)
+	if ((feeder[0] == '\"') && feeder[feeder.length() - 1] == '\"')
+	{
+		string dummy="";
+		for (int i = 0; i < feeder.length(); i++)
+		{
+			if (!(feeder[i] == '\"'))
+			{
+				// storing the quotes free string in a dummy string
+				dummy += feeder[i];
+			}
+		}
+		// assigning the dummy string back to feeder
+		return dummy;
+	}
+	// if no double quotes are detected then origional string is returned
+	return feeder;
 }

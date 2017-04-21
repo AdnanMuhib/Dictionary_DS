@@ -10,12 +10,13 @@ int main()
 	char ch;
 	string word;
 	menu:
-	cout << "\n\t1. Insert New Word in the Dictionatry ";
-	cout << "\n\t2. print Dictionary";
-	cout << "\n\t3. Find a Word From Dictionary ";
-	cout<< "\n\t4. Create Dictionary From File ";
-	cout<< "\n\t5. Write Dictionary To JSON";
-	cout << "\n\t6. Exit";
+	cout << "\n\t1- Insert New Word in the Dictionatry ";
+	cout << "\n\t2- print Dictionary";
+	cout << "\n\t3- Find a Word From Dictionary ";
+	cout << "\n\t4- Create Dictionary From Text File ";
+	cout << "\n\t5- Create Dictionary From JSON File ";
+	cout << "\n\t6- Write Dictionary To JSON ";
+	cout << "\n\t7- Exit";
 	cout << "\nchoose a number from menu: ";
 	ch = _getche();
 	switch (ch)
@@ -27,28 +28,19 @@ int main()
 		cout << "\n\t\t\tType the Word to Insert : ";
 		getline(cin, word, '\n');
 		// converting the word to Upper Case
-		for (int i = 0; i < word.length(); i++)
-		{
-			word[i] = toupper(word[i]);
-
-		}
+		word = convertToUpperCase(word);
 		newWord = new CWord(word);
 	insertMeaning:
 		cout << "\n\t\tEnter Meaning : ";
 		getline(cin, mean, '\n');
-		// converting the meaning to Upper Case
-		for (int i = 0; i < mean.length(); i++)
-		{
-			mean[i] = toupper(mean[i]);
-
-		}
+		mean = convertToUpperCase(mean);
 		term = new CNode();
 		term->setNodeData(mean);
 		newWord->defination.insert(term);
 	submenu:
 		cout << "\n\t\t\ta. Insert Another meaning ";
 		cout << "\n\t\t\tb. main Menu\n: ";
-		
+
 		ch = _getche();
 		switch (ch)
 		{
@@ -108,11 +100,19 @@ int main()
 	{
 		system("cls");
 		myDictionary.dictFromTxtFile();
-		cout << "\n\t\t********Dictionary Successfully Loaded From File********* ";
+		cout << "\n\t\t********Dictionary Successfully Loaded From TEXT File********* ";
 		goto menu;
 		break;
 	}
 	case '5':
+	{
+		system("cls");
+		myDictionary.readFromJson();
+		cout << "\n\t\t********Dictionary Successfully Loaded From JSON File********* ";
+		goto menu;
+		break;
+	}
+	case '6':
 	{
 		system("cls");
 		// write to JSON
@@ -121,7 +121,7 @@ int main()
 		goto menu;
 		break;
 	}
-	case '6':
+	case '7':
 	{
 		system("cls");
 		break;
