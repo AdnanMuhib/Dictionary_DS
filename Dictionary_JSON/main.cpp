@@ -87,12 +87,13 @@ int main()
 		cout << "\n\tType a word to Find it's meanings : ";
 		getline(cin, word, '\n');
 		// converting word to uppercase
-		for (int i = 0; i < word.length(); i++)
-		{
-			word[i] = toupper(word[i]);
-		}
+		word = convertToLowerCase(word);
 		newWord=myDictionary.find(word);
-		newWord->printWord();
+		if (newWord)
+		{
+			newWord->printWord();
+		}
+		
 		goto menu;
 		break;
 	}
