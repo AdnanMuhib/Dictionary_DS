@@ -28,12 +28,12 @@ int main()
 		cout << "\n\t\t\tType the Word to Insert : ";
 		getline(cin, word, '\n');
 		// converting the word to Upper Case
-		word = convertToUpperCase(word);
+		word = convertToLowerCase(word);
 		newWord = new CWord(word);
 	insertMeaning:
 		cout << "\n\t\tEnter Meaning : ";
 		getline(cin, mean, '\n');
-		mean = convertToUpperCase(mean);
+		mean = convertToLowerCase(mean);
 		term = new CNode();
 		term->setNodeData(mean);
 		newWord->defination.insert(term);
@@ -81,7 +81,7 @@ int main()
 		goto menu;
 		break;
 	}
-	case '3':
+	case '3': // find the meaning of a word
 	{
 		system("cls");
 		cout << "\n\tType a word to Find it's meanings : ";
@@ -93,43 +93,48 @@ int main()
 		{
 			newWord->printWord();
 		}
-		
+		else
+		{
+			cout << "\n\t\tWord not Found...";
+		}
+		cout << "\n";
 		goto menu;
 		break;
 	}
-	case '4':
+	case '4': // Load Dictionary From a TXT File
 	{
 		system("cls");
 		myDictionary.dictFromTxtFile();
-		cout << "\n\t\t********Dictionary Successfully Loaded From TEXT File********* ";
+		cout << "\n\t\t********Dictionary Successfully Loaded From TEXT File********* \n";
 		goto menu;
 		break;
 	}
-	case '5':
+	case '5': // Load Dictionary From a JSON File
 	{
 		system("cls");
 		myDictionary.readFromJson();
-		cout << "\n\t\t********Dictionary Successfully Loaded From JSON File********* ";
+		cout << "\n\t\t********Dictionary Successfully Loaded From JSON File********* \n";
 		goto menu;
 		break;
 	}
-	case '6':
+	case '6': // Write Dictionary in JSON Format
 	{
 		system("cls");
 		// write to JSON
 		myDictionary.writeToJson();
-		cout << "\n\t\t********Dictionary Successfully written in JSON********* ";
+		cout << "\n\t\t********Dictionary Successfully written in JSON*********\n\n ";
 		goto menu;
 		break;
 	}
-	case '7':
+	case '7': // Exit the Program
 	{
 		system("cls");
 		break;
 	}
-	default:
+	default: // in case of wrong user input
+		system("cls");
+		cout << "\n\t\t Wrong Input Try Again : ";
+		goto menu;
 		break;
 	}
-
-
 }

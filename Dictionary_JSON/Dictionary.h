@@ -48,10 +48,15 @@ public:
 	// create Distionary from text file
 	CDictionary& dictFromTxtFile();
 	// some friend Functions
-
 	friend string convertToUpperCase(string);
 	friend string convertToLowerCase(string);
 	friend string removeDoubleQuotes(string);
+	friend string removeSpaceFirstIndex(string);
+	// binary Searching 
+	CWord* binarySearch(string str);
+	//sorting dictionary
+	CDictionary& sort();
+
 
 };
 

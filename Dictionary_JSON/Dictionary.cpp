@@ -61,7 +61,6 @@ CDictionary::~CDictionary()
 		}
 	}
 }
-
 // constructor with A node as parameter
 CDictionary::CDictionary(CWord *& ptr)
 {
@@ -177,7 +176,6 @@ CDictionary & CDictionary::swapNodes(int index1, int index2)
 	}
 	return *this;
 }
-
 // print all nodes in the list
 void CDictionary::print()
 {
@@ -267,6 +265,7 @@ void CDictionary::printDictionary()
 {
 	CWord *ptr = head;
 	CNode *rptr;
+	cout << "\n\tWord |\tMeaning/Definition/";
 	for (int i = 0; i < count; i++)
 	{
 		cout << "\n\t" << ptr->word;
@@ -278,6 +277,7 @@ void CDictionary::printDictionary()
 		}
 		ptr = ptr->next;
 	}
+	cout << "\n\n\nTotal Words in Dictionary : " << count<<"\n\n";
 }
 
 void CDictionary::writeToJson()
@@ -295,20 +295,14 @@ void CDictionary::writeToJson()
 		{
 			if (j == ptr->defination.count - 1)
 			{
-				// remove space from the first index of the meaning if any exists
-				if (rptr->text[0] == ' ')
-				{
-					rptr->text.erase(std::remove(rptr->text.begin(), rptr->text.end(), ' '), rptr->text.end());
-				}
+				// remove space at first index if any
+				rptr->text = removeSpaceFirstIndex(rptr->text);
 				json << "\"" <<rptr->text << "\"";
 			}
 			else
 			{
-				// remove space from the first index of the meaning if any exists
-				if (rptr->text[0] == ' ')
-				{
-					rptr->text.erase(std::remove(rptr->text.begin(), rptr->text.end(), ' '), rptr->text.end());
-				}
+				// remove space at first index if any
+				rptr->text = removeSpaceFirstIndex(rptr->text);
 				json << "\"" <<rptr->text << "\",";
 				rptr = rptr->next;
 			}
@@ -369,22 +363,18 @@ CDictionary& CDictionary::readFromJson()
 				// last word of the line in JSON becomes " "word" }"
 				if(feeder[feeder.length()-1] =='}' && feeder[feeder.length() - 2] == ' ')
 				{
-					for (int i = 0; i < feeder.length()-2; i++)
+					for (int i = 0; i < (feeder.length()-2); i++)
 					{
 						dummy += feeder[i];
 					}
 					feeder = dummy;
 				}
 				
-				// eliminate space in the first index of the  string (if any)
-				if (feeder[0] == ' ')
-				{
-					feeder.erase(std::remove(feeder.begin(), feeder.end(), ' '), feeder.end());
-				}
+				feeder=removeSpaceFirstIndex(feeder);
 				// removing double Quotes around the word
 				feeder = removeDoubleQuotes(feeder);
 				// converting to upper case
-				feeder = convertToUpperCase(feeder);
+				feeder = convertToLowerCase(feeder);
 				// creating new node to store definition
 				term = new CNode();
 				term->setNodeData(feeder);
@@ -405,7 +395,7 @@ CDictionary& CDictionary::dictFromTxtFile()
 	string line;
 	string feeder;
 	stringstream str;
-	ifstream file("wordlist.txt");
+	ifstream file("A-Z.txt");
 
 	while (getline(file,line))
 	{
@@ -415,14 +405,8 @@ CDictionary& CDictionary::dictFromTxtFile()
 		word = new CWord();
 		while (getline(str,feeder,','))
 		{
-			// removing commas (if any ) in the string
-			if (feeder[feeder.length() - 1] == ',')
-				feeder.pop_back();
-			// converting to upper case
-			for (int i = 0; i <(feeder.length()); i++)
-			{
-				feeder[i] = toupper(feeder[i]);
-			}
+			// converting to Lower case
+			feeder = convertToLowerCase(feeder);
 			
 			if (i == 0)
 			{
@@ -434,10 +418,12 @@ CDictionary& CDictionary::dictFromTxtFile()
 				term = new CNode();
 				term->setNodeData(feeder);
 				word->defination.insert(term);
+				word->defination.reverse();
 			}	
 		}
 		this->insert(word);
 	}
+	this->reverse();
 	file.close();
 	return *this;
 }
@@ -462,7 +448,6 @@ string convertToLowerCase(string feeder)
 }
 // friend function to remove double Quotes from the first 
 // and the last index of the string
-
 string removeDoubleQuotes(string feeder)
 {
 	// remove the starting and ending quote of the word (if any)
@@ -482,4 +467,89 @@ string removeDoubleQuotes(string feeder)
 	}
 	// if no double quotes are detected then origional string is returned
 	return feeder;
+}
+// remove a space from the first index of a word of meaning
+string removeSpaceFirstIndex(string feeder)
+{
+
+	if (feeder[0] == ' ')
+	{
+		string dummy = "";
+		for (int i = 1; i < feeder.length(); i++)
+		{
+			dummy += feeder[i];
+		}
+		return dummy;
+	}
+	return feeder;
+}
+
+//binary searching
+CWord * CDictionary::binarySearch(string str)
+{
+	CWord * ptr = head;
+	// creating array of words 
+	CWord **words_arr = new CWord *[count];
+	
+	// sorting the Dictionary
+	sort();
+	// copying every word node address in the words array
+	for (int i = 0; i < count; i++)
+	{
+		words_arr[i] = ptr;
+		ptr = ptr->next;
+	}
+	// applying binary Search Algorithm
+	int l = 0;
+	
+
+
+	//memory release
+	if(words_arr)
+	{
+		delete[] words_arr;
+	}
+	return ptr;
+}
+// sorting dictionary
+CDictionary& CDictionary::sort()
+{
+	CWord * ptr = head;
+	// creating array of words 
+	CWord **words_arr = new CWord *[count];
+	// copying every word node address in the words array
+	for (int i = 0; i < count; i++)
+	{
+		words_arr[i] = ptr;
+		ptr = ptr->next;
+	}
+	// sorting words Alphabetically
+	bool swap = true;
+	while (swap)
+	{
+		swap = false;
+		for (int i = 0; i < count; i++)
+		{
+			if (words_arr[i]->word > words_arr[i+1]->word)
+			{
+				swap = true;
+				// swapping two words
+				ptr = words_arr[i];
+				words_arr[i] = words_arr[i + 1];
+				words_arr[i + 1] = ptr;
+			}
+		}
+	}
+	
+	// creating list again from the array
+	for (int i = 0, j = 1; j < count; i++, j++)
+	{
+		words_arr[i]->next = words_arr[j];
+	}
+	head = words_arr[0];
+	if (words_arr)
+	{
+		delete[] words_arr;
+	}
+	return *this;
 }
