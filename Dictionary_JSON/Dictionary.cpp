@@ -1,5 +1,4 @@
 #include "Dictionary.h"
-#include<algorithm>
 #include<fstream>
 #include<sstream>
 
@@ -179,14 +178,12 @@ CDictionary & CDictionary::swapNodes(int index1, int index2)
 // print all nodes in the list
 void CDictionary::print()
 {
-	
 		CWord *rptr = head;
 		for (int i = 0; i < count; i++)
 		{
 			rptr->printWord();
 			rptr = rptr->next;
 		}
-
 }
 // returns true if the list is empty
 bool CDictionary::isEmpty()
@@ -279,7 +276,7 @@ void CDictionary::printDictionary()
 	}
 	cout << "\n\n\nTotal Words in Dictionary : " << count<<"\n\n";
 }
-
+// write the Current Loaded Dictionary in Program to the JSON File
 void CDictionary::writeToJson()
 {
 	
@@ -373,7 +370,7 @@ CDictionary& CDictionary::readFromJson()
 				feeder=removeSpaceFirstIndex(feeder);
 				// removing double Quotes around the word
 				feeder = removeDoubleQuotes(feeder);
-				// converting to upper case
+				// converting to lower case
 				feeder = convertToLowerCase(feeder);
 				// creating new node to store definition
 				term = new CNode();
@@ -427,7 +424,6 @@ CDictionary& CDictionary::dictFromTxtFile()
 	file.close();
 	return *this;
 }
-
 // friend function to convert a string into upper case
 string convertToUpperCase(string feeder)
 {
@@ -483,9 +479,8 @@ string removeSpaceFirstIndex(string feeder)
 	}
 	return feeder;
 }
-
 //binary searching
-CWord * CDictionary::binarySearch(string str)
+CWord* CDictionary::binarySearch(string str)
 {
 	CWord * ptr = head;
 	// creating array of words 
@@ -499,17 +494,40 @@ CWord * CDictionary::binarySearch(string str)
 		words_arr[i] = ptr;
 		ptr = ptr->next;
 	}
-	// applying binary Search Algorithm
-	int l = 0;
+	// applying binary Search Algorithm on Words array
 	
+	// left index
+	int left = 0;
 
+	// rigth index
+	int right = count - 1;
+	// center of the array (left+right)/2
+	int m;
 
+	while (left <= right)
+	{
+		m = (left + right) / 2;
+		if (str == words_arr[m]->word)
+		{
+			//memory release before getting out of the function
+			// return the copy of found word
+			return  words_arr[m];
+		}
+			
+		if (str < words_arr[m]->word)
+			right = m - 1;
+		else
+		{
+			left = m + 1;
+		}
+	}
+	
 	//memory release
-	if(words_arr)
+	/*if(words_arr)
 	{
 		delete[] words_arr;
 	}
-	return ptr;
+	return nullptr;*/
 }
 // sorting dictionary
 CDictionary& CDictionary::sort()
@@ -528,7 +546,7 @@ CDictionary& CDictionary::sort()
 	while (swap)
 	{
 		swap = false;
-		for (int i = 0; i < count; i++)
+		for (int i = 0; i < count-1; i++)
 		{
 			if (words_arr[i]->word > words_arr[i+1]->word)
 			{

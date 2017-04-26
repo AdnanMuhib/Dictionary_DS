@@ -16,7 +16,9 @@ int main()
 	cout << "\n\t4- Create Dictionary From Text File ";
 	cout << "\n\t5- Create Dictionary From JSON File ";
 	cout << "\n\t6- Write Dictionary To JSON ";
-	cout << "\n\t7- Exit";
+	cout << "\n\t7- Sort Dictionary ";
+	cout << "\n\t8- Binary Searching ";
+	cout << "\n\te- Exit";
 	cout << "\nchoose a number from menu: ";
 	ch = _getche();
 	switch (ch)
@@ -27,7 +29,7 @@ int main()
 		string mean;
 		cout << "\n\t\t\tType the Word to Insert : ";
 		getline(cin, word, '\n');
-		// converting the word to Upper Case
+		// converting the word to Lower Case
 		word = convertToLowerCase(word);
 		newWord = new CWord(word);
 	insertMeaning:
@@ -97,6 +99,7 @@ int main()
 		{
 			cout << "\n\t\tWord not Found...";
 		}
+		newWord = nullptr;
 		cout << "\n";
 		goto menu;
 		break;
@@ -126,7 +129,31 @@ int main()
 		goto menu;
 		break;
 	}
-	case '7': // Exit the Program
+	
+	case '7': // sorting Dictionary
+	{
+		system("cls");
+		myDictionary.sort();
+		cout << "\n\t\t******* Dictionary Sorted Successfully*********";
+		goto menu;
+		break;
+	}
+	case '8': //binary searching 
+	{
+		system("cls");
+		cout << "\n\t\t Enter Word to Find : ";
+		getline(cin, word, '\n');
+		newWord = myDictionary.binarySearch(word);
+		if (newWord)
+		{
+			newWord->printWord();
+		}
+		else
+			cout << "\n\tWord Not Found ";
+		goto menu;
+		break;
+	}
+	case 'e': // Exit the Program
 	{
 		system("cls");
 		break;

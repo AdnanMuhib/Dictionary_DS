@@ -1,3 +1,10 @@
+Bad, evil, immoral, wicked, corrupt, sinful, depraved, rotten, contaminated, spoiled, tainted, harmful, injurious, unfavorable, defective, inferior, imperfect, substandard, faulty, improper, inappropriate, unsuitable, disagreeable, unpleasant, cross, nasty, unfriendly, irascible, horrible, atrocious, outrageous, scandalous, infamous, wrong, noxious, sinister, putrid, snide, deplorable, dismal, gross, heinous, nefarious, base, obnoxious, detestable, despicable, contemptible, foul, rank, ghastly, execrable
+Beautiful, pretty, lovely, handsome, attractive, gorgeous, dazzling, splendid, magnificent, comely, fair, ravishing, graceful, elegant, fine, exquisite, aesthetic, pleasing, shapely, delicate, stunning, glorious, heavenly, resplendent, radiant, glowing, blooming, sparkling
+Begin, start, open, launch, initiate, commence, inaugurate, originate
+Big, enormous, huge, immense, gigantic, vast, colossal, gargantuan, large, sizable, grand, great, tall, substantial, mammoth, astronomical, ample, broad, expansive, spacious, stout, tremendous, titanic, mountainous
+Brave, courageous, fearless, dauntless, intrepid, plucky, daring, heroic, valorous, audacious, bold, gallant, valiant, doughty, mettlesome
+Break, fracture, rupture, shatter, smash, wreck, crash, demolish, atomize
+Bright, shining, shiny, gleaming, brilliant, sparkling, shimmering, radiant, vivid, colorful, lustrous, luminous, incandescent, intelligent, knowing, quick-witted, smart, intellectual
 Amazing word, incredible, unbelievable, improbable, fabulous, wonderful, fantastic, astonishing, astounding, extraordinary
 Anger, enrage, infuriate, arouse, nettle, exasperate, inflame, madden
 Angry, mad, furious, enraged, excited, wrathful, indignant, exasperated, aroused, inflamed 
@@ -11,12 +18,6 @@ Big, enormous, huge, immense, gigantic, vast, colossal, gargantuan, large, sizab
 Brave, courageous, fearless, dauntless, intrepid, plucky, daring, heroic, valorous, audacious, bold, gallant, valiant, doughty, mettlesome
 Break, fracture, rupture, shatter, smash, wreck, crash, demolish, atomize
 Bright, shining, shiny, gleaming, brilliant, sparkling, shimmering, radiant, vivid, colorful, lustrous, luminous, incandescent, intelligent, knowing, quick-witted, smart, intellectual
-Calm, quiet, peaceful, still, tranquil, mild, serene, smooth, composed, collected, unruffled, level-headed, unexcited, detached, aloof
-Come,  approach, advance, near, arrive, reach
-Cool, chilly, cold, frosty, wintry, icy, frigid
-Crooked, bent, twisted, curved, hooked, zigzag
-Cry, shout, yell, yowl, scream, roar, bellow, weep, wail, sob, bawl
-Cut, gash, slash, prick, nick, sever, slice, carve, cleave, slit, chop, crop, lop, reduce
 Dangerous, perilous, hazardous, risky, uncertain, unsafe
 Dark, shadowy, unlit, murky, gloomy, dim, dusky, shaded, sunless, black, dismal, sad
 Decide, determine, settle, choose, resolve
@@ -27,6 +28,12 @@ Destroy, ruin, demolish, raze, waste, kill, slay, end, extinguish
 Difference, disagreement, inequity, contrast, dissimilarity, incompatibility
 Do, execute, enact, carry out, finish, conclude, effect, accomplish, achieve, attain
 Dull, boring, tiring„ tiresome, uninteresting, slow, dumb, stupid, unimaginative, lifeless, dead, insensible, tedious, wearisome, listless, expressionless, plain, monotonous, humdrum, dreary
+Calm, quiet, peaceful, still, tranquil, mild, serene, smooth, composed, collected, unruffled, level-headed, unexcited, detached, aloof
+Come,  approach, advance, near, arrive, reach
+Cool, chilly, cold, frosty, wintry, icy, frigid
+Crooked, bent, twisted, curved, hooked, zigzag
+Cry, shout, yell, yowl, scream, roar, bellow, weep, wail, sob, bawl
+Cut, gash, slash, prick, nick, sever, slice, carve, cleave, slit, chop, crop, lop, reduce
 Eager, keen, fervent, enthusiastic, involved, interested, alive to
 End, stop, finish, terminate, conclude, close, halt, cessation, discontinuance
 Enjoy, appreciate, delight in, be pleased, indulge in, luxuriate in, bask in, relish, devour, savor, like
