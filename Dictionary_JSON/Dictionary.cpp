@@ -9,6 +9,7 @@ CDictionary::CDictionary():head(new CWord())
 {
 	head = nullptr;
 	count = 0;
+	
 }
 // copy constructor
 CDictionary::CDictionary(const CDictionary & src)
@@ -71,7 +72,7 @@ CDictionary::CDictionary(CWord *& ptr)
 CDictionary & CDictionary::insert(CWord *& ptr)
 {
 	// input the value to be stored in the Node
-//	ptr->setWord();
+	//	ptr->setWord();
 
 	ptr->next = head;
 	head = ptr;
@@ -237,7 +238,18 @@ CWord* CDictionary::find(string key)
 	{
 		if (key == ptr->getKey())
 			return ptr;
-		else
+		else 
+		{
+			CNode *dptr = ptr->defination.head;
+			for (int i = 0; i < ptr->defination.count; i++)
+			{
+				if (dptr->getKey() == key)
+				{
+					return ptr;
+				}
+				dptr = dptr->next;
+			}
+		}
 			ptr = ptr->next;
 	}
 	return nullptr;
@@ -392,7 +404,7 @@ CDictionary& CDictionary::dictFromTxtFile()
 	string line;
 	string feeder;
 	stringstream str;
-	ifstream file("A-Z.txt");
+	ifstream file("synonyms1.txt");
 
 	while (getline(file,line))
 	{
@@ -404,7 +416,7 @@ CDictionary& CDictionary::dictFromTxtFile()
 		{
 			// converting to Lower case
 			feeder = convertToLowerCase(feeder);
-			
+			feeder = removeSpaceFirstIndex(feeder);
 			if (i == 0)
 			{
 				word->setWord(feeder);

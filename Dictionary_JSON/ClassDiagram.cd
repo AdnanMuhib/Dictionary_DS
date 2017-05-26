@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CDefination">
+    <Position X="7" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAggBCAAAEBAAAAAAAAAAAAAKACAAAAQAAQAA=</HashCode>
+      <FileName>Defination.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDictionary">
+    <Position X="2.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAggBCAAQkBAAAAAAAEAAAECIACAAAQAAAQIA=</HashCode>
+      <FileName>Dictionary.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DocWord" Collapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAARIAACAAAAAAEAIAgAA=</HashCode>
+      <FileName>DocWord.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LineCNode" Collapsed="true">
+    <Position X="4.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAAAAAAAAEAAAAAAAAAAAgBAAAAAAIAAIAAAA=</HashCode>
+      <FileName>LineCNode.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LineNumberList" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQggBCAAAEBAAAAAAAEAAAAAIACAEAAAAAQAA=</HashCode>
+      <FileName>LineNumberList.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CNode">
+    <Position X="9.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACCAAQAAAAAAAAABAAAAAAAAAAgAAAIAAAAAAIBAAA=</HashCode>
+      <FileName>Node.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CWord">
+    <Position X="4.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAJAEAAAAAABAAAAAAAARAAAAAAAAAAAAIAgAE=</HashCode>
+      <FileName>Word.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WordList" Collapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAggBCAAAkBAAAAAAAEAACECIACAAAAAAAQIA=</HashCode>
+      <FileName>WordList.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

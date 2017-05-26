@@ -1,10 +1,16 @@
 #include"Dictionary.h"
+#include"WordList.h"
 //#include<iostream>
 #include<conio.h>
 using namespace std;
 int main()
 {
 	CDictionary myDictionary;
+	WordList myWordlist;
+	myWordlist.remove_trivial_from_document();
+	myWordlist.loadDocument();
+	myWordlist.compute_redundancy();
+	myWordlist.printDictionary();
 	CWord *newWord;
 	CNode *term;
 	char ch;

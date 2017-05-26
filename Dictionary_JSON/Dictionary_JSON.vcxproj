@@ -110,17 +110,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BinaryTree.h" />
+    <ClInclude Include="BTNode.h" />
     <ClInclude Include="Defination.h" />
     <ClInclude Include="Dictionary.h" />
+    <ClInclude Include="DocWord.h" />
+    <ClInclude Include="LineCNode.h" />
+    <ClInclude Include="LineNumberList.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Word.h" />
+    <ClInclude Include="WordList.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BinaryTree.cpp" />
+    <ClCompile Include="BTNode.cpp" />
     <ClCompile Include="Defination.cpp" />
     <ClCompile Include="Dictionary.cpp" />
+    <ClCompile Include="DocWord.cpp" />
+    <ClCompile Include="LineCNode.cpp" />
+    <ClCompile Include="LineNumberList.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Word.cpp" />
+    <ClCompile Include="WordList.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

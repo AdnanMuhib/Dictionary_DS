@@ -1,0 +1,9 @@
+"Care should be taken: to ensure; that use of attributes collected and maintained in the
+identity proofing process are limited to its original purpose for collection.
+If use of such information does not fall within uses related to identity proofing,
+1 authentication, authorization or attribute assertions, or to comply with law or legal process,
+the CSP must provide notice and obtain (consent from) the subscriber.
+"Rather if there are uses outside the bounds of these explicit purposes,
+ the subscriber should be provided with a meaningful way to understand
+ the purpose for additional uses,
+ and the opportunity to accept or decline."

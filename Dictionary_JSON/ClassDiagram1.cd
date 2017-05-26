@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CDefination">
+    <Position X="11" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAggBCAAAEBAAAAAAAAAAAAAKACAAAAQAAQAA=</HashCode>
+      <FileName>Defination.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDictionary">
+    <Position X="16.25" Y="1" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAggBCAAQkBAAAAAAAEAAAECIACAAAQAAAQIA=</HashCode>
+      <FileName>Dictionary.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DocWord">
+    <Position X="3.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAEAAAAQAACRIAADAAAAAAEAIAgAA=</HashCode>
+      <FileName>DocWord.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LineCNode">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAAAAAAAAEAAAAAAAAAAAgBAAAAAAIAAIAAAA=</HashCode>
+      <FileName>LineCNode.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LineNumberList">
+    <Position X="0.5" Y="3.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQggBCAAAEBAAAAAAAEAAAAAIACAEAAAAAQAA=</HashCode>
+      <FileName>LineNumberList.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CNode">
+    <Position X="10.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACCAAQAAAAAAAAABAAAAAAAAAAgAAAIAAAAAAIBAAA=</HashCode>
+      <FileName>Node.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CWord">
+    <Position X="13.5" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAJAEAAAAAABAAAAAAAARAAAAAAAAAAAAIAgAE=</HashCode>
+      <FileName>Word.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WordList">
+    <Position X="5.75" Y="1" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAQggBCQAAsBgAIAAAEEAACMCIACIAAAAAAQIA=</HashCode>
+      <FileName>WordList.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BTNode">
+    <Position X="8.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAABAABEAAAgAAIAAABAAACAAAAgAA=</HashCode>
+      <FileName>BTNode.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BinaryTree">
+    <Position X="8.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgBAAAgAAAAgkAAAAAAAAAAACAAAAAAAQAA=</HashCode>
+      <FileName>BinaryTree.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
