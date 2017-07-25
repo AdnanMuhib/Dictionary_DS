@@ -29,9 +29,6 @@ Things to be Done
 ## Binary file read/write
 ## Extend the Wordlist for Different Subjects
 ## Iterators to make the Dictionary Searching Word Fast
-## Binary Searching
-## and whatever betterment can be done
-
 
 Dictionary Words Collected From
 https://www.easypacelearning.com/english-books/the-big-list-of-a-to-z-of-words
