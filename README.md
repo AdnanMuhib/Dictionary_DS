@@ -21,5 +21,4 @@ and if a user wants to search a particular word's meaning , that word is also co
 ## Binary file read/write
 ## Extend the Wordlist for Different Subjects
 ## Iterators to make the Dictionary Searching Word Fast
-## Binary Searching
-## and whatever betterment can be done
+## hashing to make it more fast 
