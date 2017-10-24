@@ -1,12 +1,11 @@
 #include "WordList.h"
-
 #include<fstream>
 #include<sstream>
 
-
+// This the constructor for the class WordList. It loads the trivial
+// word to the trivailWordsTree and also loads dictionary to the system...
 WordList::WordList()
 {
-
 	head = nullptr;
 	count = 0;
 	load_trivial_words();
@@ -14,7 +13,7 @@ WordList::WordList()
 	dictionary.sort();
 }
 
-
+// Destructor...
 WordList::~WordList()
 {
 	if (this->isNotEmpty())
@@ -30,6 +29,8 @@ WordList::~WordList()
 	}
 }
 
+// One parameter Constuctor. Takes one object of DocWord type and initializes
+// the dictionary with that...
 WordList::WordList(DocWord *& ptr)
 {
 	head = ptr;
@@ -37,6 +38,7 @@ WordList::WordList(DocWord *& ptr)
 	ptr = head->next = nullptr;
 }
 
+// This the copy Constructor...
 WordList::WordList(const WordList & src)
 {
 	this->count = src.count;
@@ -68,17 +70,20 @@ WordList::WordList(const WordList & src)
 		}
 		// finally destination pointer's last node will become NUll
 		dptr->next = nullptr;
-
 	}
 }
+
+// Inserting an DocWord object to our list...
 WordList & WordList::insert(DocWord *& ptr)
 {
-	ptr->next = head;
-	head = ptr;
+	ptr->next = this->head;
+	this->head = ptr;
 	ptr = nullptr;
 	++count;
 	return *this;
 }
+
+// Inserting an Docword object at the given index...
 WordList & WordList::insert(DocWord *& ptr, int index)
 {
 	// index correction
@@ -90,7 +95,7 @@ WordList & WordList::insert(DocWord *& ptr, int index)
 		return insert(ptr);
 	else
 	{
-		DocWord *rptr = head;
+		DocWord *rptr = this->head;
 		for (int i = 0; i < index; i++)
 		{
 			rptr = rptr->next;
@@ -104,9 +109,9 @@ WordList & WordList::insert(DocWord *& ptr, int index)
 	return *this;
 }
 
+// Removing first element from the list...
 DocWord * WordList::remove()
 {
-
 	if (head)
 	{
 		DocWord* ptr = head;
@@ -118,6 +123,8 @@ DocWord * WordList::remove()
 	else
 		return nullptr;
 }
+
+// Removing an element from a specific location...
 DocWord * WordList::remove(int index)
 {
 	// index correction 
@@ -127,7 +134,6 @@ DocWord * WordList::remove(int index)
 		index = count - 1;
 	if (index == 0)
 		return remove();
-
 
 	DocWord *ptr, *rptr = head;
 	for (int i = 1; i < index; i++)
@@ -140,6 +146,8 @@ DocWord * WordList::remove(int index)
 	--count;
 	return ptr;
 }
+
+// Swapping two nodes in the list with their indexes...
 WordList & WordList::swapNodes(int index1, int index2)
 {
 	// index correction for both nodes
@@ -170,6 +178,8 @@ WordList & WordList::swapNodes(int index1, int index2)
 	}
 	return *this;
 }
+
+// Printing the whole list to the console...
 void WordList::print()
 {
 	DocWord *rptr = head;
@@ -179,6 +189,8 @@ void WordList::print()
 		rptr = rptr->next;
 	}
 }
+
+// Checking if the list is empty...
 bool WordList::isEmpty()
 {
 	if (head == nullptr)
@@ -187,6 +199,8 @@ bool WordList::isEmpty()
 	}
 	return false;
 }
+
+// Checking if the list is not empty...
 bool WordList::isNotEmpty()
 {
 	if (head != nullptr)
@@ -195,6 +209,8 @@ bool WordList::isNotEmpty()
 	}
 	return false;
 }
+
+// Function to reverse the whole Word list...
 WordList & WordList::reverse()
 {
 	if (count<2)
@@ -220,6 +236,8 @@ WordList & WordList::reverse()
 	delete[] arr;
 	return *this;
 }
+
+// Function to find an word from the list...
 DocWord * WordList::find(string word)
 {
 	DocWord* ptr = head;
@@ -232,6 +250,8 @@ DocWord * WordList::find(string word)
 	}
 	return nullptr;
 }
+
+// Function to find an node...
 DocWord * WordList::find(DocWord * ptr)
 {
 	DocWord *rptr = head;
@@ -247,6 +267,7 @@ DocWord * WordList::find(DocWord * ptr)
 	return nullptr;
 }
 
+// Function to print the whole dictinary...
 void WordList::printDictionary()
 {
 	DocWord *ptr = head;
