@@ -1,20 +1,25 @@
 #include"Dictionary.h"
 #include"WordList.h"
-//#include<iostream>
 #include<conio.h>
+
 using namespace std;
 int main()
 {
+	// Creating a new object of myDictionary and WordList to use further...
 	CDictionary myDictionary;
 	WordList myWordlist;
+	// First of all removing the trivial words from our document...
 	myWordlist.remove_trivial_from_document();
 	myWordlist.loadDocument();
+	// Computing the redundancy in the document...
 	myWordlist.compute_redundancy();
+	// This prints the whole dictionary to the console...
 	myWordlist.printDictionary();
 	CWord *newWord;
 	CNode *term;
 	char ch;
 	string word;
+	// This is a manu for the user to choose from...
 	menu:
 	cout << "\n\t1- Insert New Word in the Dictionatry ";
 	cout << "\n\t2- print Dictionary";
